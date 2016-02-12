@@ -58,7 +58,6 @@
 			&:hover {
 				text-decoration: none;
 				cursor: pointer;
-				text-shadow:1px 1px 1px white;
 			}
 			ins {
 				height: 16px;
@@ -215,7 +214,6 @@
 		width: 8px;		
 		z-index: 10001;		
 		background-color: transparent;
-		text-shadow: 1px 1px 1px white;
 		color: black;		
 	}
 	#jstree-marker-line {
@@ -562,6 +560,8 @@
 
 	// Applied to trees when displaying filter / search results.
 	&.filtered-list {
+		margin-top: $grid-y;
+		
 		li:not(.filtered-item) > a {
 			color: $color-text-disabled;
 		}
@@ -607,7 +607,13 @@
 	border-radius: 3px;
 }
 
-/* ensure status is visible in sidebar */
+/**
+ * DEPRECATED:
+ * .cms-content-tools will be removed in 4.0
+ * Use .cms-content-filters instead.
+ *
+ * Ensure status is visible in sidebar
+ */
 .cms-content-tools .cms-tree.jstree {
 	li {
 		min-width: 187px;

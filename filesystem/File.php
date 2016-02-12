@@ -129,7 +129,7 @@ class File extends DataObject {
 		'','ace','arc','arj','asf','au','avi','bmp','bz2','cab','cda','css','csv','dmg','doc','docx','dotx','dotm',
 		'flv','gif','gpx','gz','hqx','ico','jar','jpeg','jpg','js','kml', 'm4a','m4v',
 		'mid','midi','mkv','mov','mp3','mp4','mpa','mpeg','mpg','ogg','ogv','pages','pcx','pdf','pkg',
-		'png','pps','ppt','pptx','potx','potm','ra','ram','rm','rtf','sit','sitx','tar','tgz','tif','tiff',
+		'png','pps','ppt','pptx','potx','potm','ra','ram','rm','rtf','sit','sitx', 'svg', 'tar','tgz','tif','tiff',
 		'txt','wav','webm','wma','wmv','xls','xlsx','xltx','xltm','zip','zipx',
 	);
 
@@ -238,7 +238,7 @@ class File extends DataObject {
 	 */
 	public static function find($filename) {
 		// Get the base file if $filename points to a resampled file
-		$filename = preg_replace('/_resampled\/[^-]+-/', '', $filename);
+		$filename = Image::strip_resampled_prefix($filename);
 
 		// Split to folders and the actual filename, and traverse the structure.
 		$parts = explode("/", $filename);

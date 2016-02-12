@@ -27,7 +27,7 @@ class HtmlEditorField extends TextareaField {
 	private static $sanitise_server_side = false;
 
 	protected $rows = 30;
-	
+
 	/**
 	 * @deprecated since version 4.0
 	 */
@@ -47,7 +47,7 @@ class HtmlEditorField extends TextareaField {
 	 * @param string $title The human-readable field label.
 	 * @param mixed $value The value of the field.
 	 * @param string $config HTMLEditorConfig identifier to be used. Default to the active one.
-	 */	
+	 */
 	public function __construct($name, $title = null, $value = '', $config = null) {
 		parent::__construct($name, $title, $value);
 
@@ -101,7 +101,7 @@ class HtmlEditorField extends TextareaField {
 			// Add default empty title & alt attributes.
 			if(!$img->getAttribute('alt')) $img->setAttribute('alt', '');
 			if(!$img->getAttribute('title')) $img->setAttribute('title', '');
-		
+
 			// Use this extension point to manipulate images inserted using TinyMCE, e.g. add a CSS class, change default title
 			// $image is the image, $img is the DOM model
 			$this->extend('processImage', $image, $img);
@@ -352,7 +352,7 @@ class HtmlEditorField_Toolbar extends RequestHandler {
 				'<h4>' . sprintf($numericLabelTmpl, '1', _t('HtmlEditorField.ADDURL', 'Add URL')) . '</h4>'),
 			$remoteURL = new TextField('RemoteURL', 'http://'),
 			new LiteralField('addURLImage',
-				'<button class="action ui-action-constructive ui-button field add-url" data-icon="addMedia">' .
+				'<button type="button" class="action ui-action-constructive ui-button field add-url" data-icon="addMedia">' .
 				_t('HtmlEditorField.BUTTONADDURL', 'Add url').'</button>')
 		);
 
@@ -470,7 +470,10 @@ class HtmlEditorField_Toolbar extends RequestHandler {
 
 	protected function viewfile_getLocalFileByURL($fileUrl) {
 		$filteredUrl = Director::makeRelative($fileUrl);
-		$filteredUrl = preg_replace('/_resampled\/[^-]+-/', '', $filteredUrl);
+
+		// Remove prefix and querystring
+		$filteredUrl = Image::strip_resampled_prefix($filteredUrl);
+		list($filteredUrl) = explode('?', $filteredUrl);
 
 		$file = File::get()->filter('Filename', $filteredUrl)->first();
 
@@ -512,6 +515,7 @@ class HtmlEditorField_Toolbar extends RequestHandler {
 	public function viewfile($request) {
 		$file = null;
 		$url = null;
+
 
 		// TODO Would be cleaner to consistently pass URL for both local and remote files,
 		// but GridField doesn't allow for this kind of metadata customization at the moment.
@@ -955,16 +959,17 @@ class HtmlEditorField_Embed extends HtmlEditorField_File {
 		$this->oembed = Oembed::get_oembed_from_url($url);
 		if(!$this->oembed) {
 			$controller = Controller::curr();
-			$controller->response->addHeader('X-Status',
+			$response = $controller->getResponse();
+			$response->addHeader('X-Status',
 				rawurlencode(_t(
 					'HtmlEditorField.URLNOTANOEMBEDRESOURCE',
 					"The URL '{url}' could not be turned into a media resource.",
 					"The given URL is not a valid Oembed resource; the embed element couldn't be created.",
 					array('url' => $url)
 				)));
-			$controller->response->setStatusCode(404);
+			$response->setStatusCode(404);
 
-			throw new SS_HTTPResponse_Exception($controller->response);
+			throw new SS_HTTPResponse_Exception($response);
 		}
 	}
 

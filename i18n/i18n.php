@@ -19,8 +19,9 @@ require_once 'i18nSSLegacyAdapter.php';
  *
  * Templates:
  * <code>
- * <% _t('MyNamespace.MYENTITY', 'My default natural language value') %>
- * <% sprintf(_t('MyNamespace.MYENTITY','Counting %s things'),$ThingsCount) %>
+ * <%t MyNamespace.MYENTITY 'My default natural language value' %>
+ * <%t MyNamespace.MYENTITY 'Counting %s things' s=$ThingsCount %>
+ * <%t MyNamespace.MYENTITY 'Counting {count} things' count=$ThingsCount %>
  * </code>
  *
  * Javascript (see framework/javascript/i18n.js):
@@ -1099,6 +1100,10 @@ class i18n extends Object implements TemplateGlobalProvider, Flushable {
 			'name' => 'Dutch',
 			'native' => 'Nederlands'
 		),
+		'nl_BE' => array(
+			'name' => 'Dutch (Belgium)',
+			'native' => 'Nederlands (Belgi&euml;)'
+		),
 		'en_NZ' => array(
 			'name' => 'English (NZ)',
 			'native' => 'English (NZ)'
@@ -1130,6 +1135,10 @@ class i18n extends Object implements TemplateGlobalProvider, Flushable {
 		'fr_FR' => array(
 			'name' => 'French',
 			'native' => 'fran&ccedil;ais'
+		),
+		'fr_BE' => array(
+			'name' => 'French (Belgium)',
+			'native' => 'Fran&ccedil;ais (Belgique)'
 		),
 		'gd_GB' => array(
 			'name' => 'Gaelic',

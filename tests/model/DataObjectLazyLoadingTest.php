@@ -42,6 +42,8 @@ class DataObjectLazyLoadingTest extends SapphireTest {
 		'VersionedTest_RelatedWithoutVersion',
 		'VersionedTest_SingleStage',
 		'VersionedTest_WithIndexes',
+		'VersionedTest_PublicStage',
+		'VersionedTest_PublicViaExtension',
 		// From DataObjectLazyLoadingTest
 		'VersionedLazy_DataObject',
 		'VersionedLazySub_DataObject',

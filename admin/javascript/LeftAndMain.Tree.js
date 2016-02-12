@@ -181,6 +181,8 @@
 								var isAllowed = (
 									// Don't allow moving the root node
 									movedNode.data('id') !== 0 
+									// Archived pages can't be moved
+									&& !movedNode.hasClass('status-archived')
 									// Only allow moving node inside the root container, not before/after it
 									&& (!isMovedOntoContainer || data.p == 'inside')
 									// Children are generally allowed on parent
@@ -488,27 +490,6 @@
 			 */
 			getID: function() {
 				return this.data('id');
-			}
-		});
-		
-		$('.cms-content-batchactions input[name=view-mode-batchactions]').entwine({
-			onmatch: function() {
-				// set active by default
-				this.redraw();
-				this._super();
-			},
-			onunmatch: function() {
-				this._super();
-			},
-			onclick: function(e) {
-				this.redraw();
-			},
-			redraw: function(type) {
-				if(window.debug) console.log('redraw', this.attr('class'), this.get(0));
-				
-				$('.cms-tree')
-					.toggleClass('draggable', !this.is(':checked'))
-					.toggleClass('multiple', this.is(':checked'));
 			}
 		});
 	});

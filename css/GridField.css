@@ -5,7 +5,7 @@
 /* Only for use as shadows as they wont work in older browsers */
 /*$color-optional: #a1d2eb !default; */
 /** ----------------------------------------------- Textures ----------------------------------------------- */
-/** ----------------------------------------------- Typography.  ------------------------------------------------ */
+/** ----------------------------------------------- Typography. ------------------------------------------------ */
 /** ----------------------------------------------- Grid Units (px)  We have a vertical rhythm that the grid is based off both x (=horizontal) and y (=vertical). All internal padding and margins are scaled to this and accounting for paragraphs ------------------------------------------------ */
 /** ----------------------------------------------- Application Logo (CMS Logo) Must be 24px x 24px ------------------------------------------------ */
 /*Mixin used to generate slightly smaller text and forms
@@ -33,7 +33,7 @@ Used in side panels and action tabs
 .cms .ss-gridfield .add-existing-autocompleter input.relation-search { width: 270px; height: 32px; margin-bottom: 12px; border-top-right-radius: 0; border-bottom-right-radius: 0; }
 .cms .ss-gridfield .add-existing-autocompleter button#action_gridfield_relationadd { height: 32px; margin-left: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: none; }
 .cms .ss-gridfield .grid-csv-button, .cms .ss-gridfield .grid-print-button { margin-bottom: 0; font-size: 12px; display: inline-block; vertical-align: middle; *vertical-align: auto; *zoom: 1; *display: inline; }
-.cms table.ss-gridfield-table { display: table; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; padding: 0; border-collapse: separate; border-bottom: 0 none; width: 100%; }
+.cms table.ss-gridfield-table { display: table; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; padding: 0; border-collapse: separate; border-bottom: 0 none; width: 100%; overflow: hidden; }
 .cms table.ss-gridfield-table thead { color: #323e46; background: transparent; }
 .cms table.ss-gridfield-table thead tr.filter-header .fieldgroup { max-width: 512px; }
 .cms table.ss-gridfield-table thead tr.filter-header .fieldgroup .fieldgroup-field { padding: 0; }
@@ -45,7 +45,7 @@ Used in side panels and action tabs
 .cms table.ss-gridfield-table tbody td.col-buttons { width: 1px; padding: 0 8px; text-align: right; white-space: nowrap; }
 .cms table.ss-gridfield-table tbody td.col-listChildrenLink { width: 16px; border-right: none; text-indent: -9999em; padding: 0; }
 .cms table.ss-gridfield-table tbody td.col-listChildrenLink .list-children-link { background: transparent url(../images/sitetree_ss_default_icons.png) no-repeat 3px -4px; display: block; }
-.cms table.ss-gridfield-table tbody td.col-getTreeTitle span.item { color: #0073C1; }
+.cms table.ss-gridfield-table tbody td.col-getTreeTitle span.item { color: #0071c4; }
 .cms table.ss-gridfield-table tbody td.col-getTreeTitle span.badge { clear: both; text-transform: uppercase; display: inline-block; padding: 0px 3px; font-size: 0.75em; line-height: 1em; margin-left: 10px; margin-right: 6px; margin-top: -1px; -moz-border-radius: 2px / 2px; -webkit-border-radius: 2px 2px; border-radius: 2px / 2px; }
 .cms table.ss-gridfield-table tbody td.col-getTreeTitle span.badge.status-modified { color: #7E7470; border: 1px solid #C9B800; background-color: #FFF0BC; }
 .cms table.ss-gridfield-table tbody td.col-getTreeTitle span.badge.status-addedtodraft { color: #7E7470; border: 1px solid #C9B800; background-color: #FFF0BC; }
@@ -135,3 +135,5 @@ Used in side panels and action tabs
 .cms table.ss-gridfield-table td:last-child { border-right: 1px solid rgba(0, 0, 0, 0.1); }
 .cms table.ss-gridfield-table td.col-StripThumbnail { padding: 2px 4px; width: 32px; height: 32px; }
 .cms table.ss-gridfield-table td.col-StripThumbnail img { width: 32px; height: 32px; display: block; }
+
+/*# sourceMappingURL=GridField.css.map */
